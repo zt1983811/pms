@@ -1,15 +1,15 @@
 package com.iqwareinc.platform.app.restful.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.iqwareinc.platform.common.annotation.RestEndpoint;
 import com.iqwareinc.platform.core.model.entity.Property;
 import com.iqwareinc.platform.core.service.PropertyService;
 
-@Controller
+@RestEndpoint
 @RequestMapping(value = "/properties")
 public class PropertyController {
 
