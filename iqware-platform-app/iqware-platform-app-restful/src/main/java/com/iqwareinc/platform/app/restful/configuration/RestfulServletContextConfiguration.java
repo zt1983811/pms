@@ -15,7 +15,7 @@ public class RestfulServletContextConfiguration {
    @Bean
    public ViewResolver internalResourceViewResolver() {
       InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-      viewResolver.setPrefix("/WEB-INF/views");
+      viewResolver.setPrefix("/WEB-INF/views/");
       viewResolver.setSuffix(".jsp");
       return viewResolver;
    }

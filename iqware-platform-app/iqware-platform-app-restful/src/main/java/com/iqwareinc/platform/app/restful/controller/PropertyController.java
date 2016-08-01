@@ -1,16 +1,25 @@
 package com.iqwareinc.platform.app.restful.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.iqwareinc.platform.core.model.entity.Property;
+import com.iqwareinc.platform.core.service.PropertyService;
+
 @Controller
 @RequestMapping(value = "/properties")
 public class PropertyController {
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String list(Model model) {
-		return "property/list";
-	}
+   @Autowired
+   private PropertyService propertyService;
+
+   @RequestMapping(method = RequestMethod.GET)
+   public String list(Model model) {
+      Property property = new Property("Test from controller");
+      propertyService.saveProperty(property);
+      return "property/list";
+   }
 }

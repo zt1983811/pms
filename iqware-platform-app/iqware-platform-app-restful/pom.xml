@@ -9,6 +9,12 @@
 	<artifactId>iqware-platform-app-restful</artifactId>
 	<packaging>war</packaging>
 
+	<properties>
+		<java.servlet.version>2.5</java.servlet.version>
+		<java.servlet.jsp.version>2.1</java.servlet.jsp.version>
+		<java.servlet.jstl.version>1.2</java.servlet.jstl.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.iqwareinc.platform.core</groupId>
@@ -30,7 +36,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
@@ -38,11 +44,39 @@
 			<scope>provided</scope>
 		</dependency>
 
+
 		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${java.servlet.version}</version>
+			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${java.servlet.jsp.version}</version>
+			<scope>provided</scope>
+
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${java.servlet.jstl.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>jstl</groupId> -->
+		<!-- <artifactId>jstl</artifactId> -->
+		<!-- <version>1.2</version> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
