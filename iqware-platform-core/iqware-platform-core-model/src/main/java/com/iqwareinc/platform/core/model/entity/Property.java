@@ -13,10 +13,13 @@ public class Property extends BaseEntity<Long> {
    @Column(name = "name")
    private String            name;
 
+   @Column(name = "type")
+   private String            type;
+
    public Property() {
-      
+
    }
-   
+
    public Property(String name) {
       this.name = name;
    }
@@ -28,4 +31,13 @@ public class Property extends BaseEntity<Long> {
    public void setName(String name) {
       this.name = name;
    }
+
+   public String getType() {
+      return type;
+   }
+
+   public void setType(String type) {
+      this.type = type;
+   }
+
 }

@@ -1,4 +1,4 @@
-package com.iqwareinc.platform.app.restful.controller;
+package com.iqwareinc.platform.app.restapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
