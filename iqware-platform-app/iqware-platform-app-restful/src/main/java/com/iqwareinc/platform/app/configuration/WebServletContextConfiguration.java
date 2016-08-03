@@ -1,4 +1,4 @@
-package com.iqwareinc.platform.app.restapi.configuration;
+package com.iqwareinc.platform.app.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import com.iqwareinc.platform.common.annotation.WebController;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.iqwareinc.platform.app.restapi", useDefaultFilters = false, includeFilters = @ComponentScan.Filter(WebController.class))
+@ComponentScan(basePackages = "com.iqwareinc.platform.app.web", useDefaultFilters = false, includeFilters = @ComponentScan.Filter(WebController.class))
 public class WebServletContextConfiguration extends WebMvcConfigurerAdapter {
 
    @Bean

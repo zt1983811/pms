@@ -1,4 +1,4 @@
-package com.iqwareinc.platform.app.restapi.configuration;
+package com.iqwareinc.platform.app.configuration;
 
 import java.util.Arrays;
 import java.util.List;

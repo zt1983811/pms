@@ -1,4 +1,4 @@
-package com.iqwareinc.platform.app.restapi.configuration;
+package com.iqwareinc.platform.app.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

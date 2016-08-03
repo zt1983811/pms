@@ -7,6 +7,6 @@ package com.iqwareinc.platform.app.restapi;
  *
  */
 public final class ResourceConstants {
-   public static final String $PROPERTIES$      = "properties";
-   public static final String $PROPERTIES$_PATH = "/" + $PROPERTIES$;
+   public static final String $PROPERTY$      = "properties";
+   public static final String $PROPERTY$_PATH = "/" + $PROPERTY$;
 }

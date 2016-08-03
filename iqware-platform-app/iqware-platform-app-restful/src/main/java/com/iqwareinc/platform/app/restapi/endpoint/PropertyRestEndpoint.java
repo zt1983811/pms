@@ -1,4 +1,4 @@
-package com.iqwareinc.platform.app.restapi.controller;
+package com.iqwareinc.platform.app.restapi.endpoint;
 
 import java.util.List;
 
@@ -24,8 +24,8 @@ import com.iqwareinc.platform.core.service.PropertyService;
 import static com.iqwareinc.platform.app.restapi.ResourceConstants.*;
 
 @RestEndpoint
-@RequestMapping(value = $PROPERTIES$_PATH)
-public class PropertyRestController {
+@RequestMapping(value = $PROPERTY$_PATH)
+public class PropertyRestEndpoint {
 
    @Inject
    private PropertyService propertyService;
@@ -52,7 +52,7 @@ public class PropertyRestController {
       property.setType(form.getType());
       property = this.propertyService.saveProperty(property);
 
-      String uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path($PROPERTIES$_PATH + "/{id}").buildAndExpand(property.getId()).toString();
+      String uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path($PROPERTY$_PATH + "/{id}").buildAndExpand(property.getId()).toString();
       HttpHeaders headers = new HttpHeaders();
       headers.add("Location", uri);
       return new ResponseEntity<>(property, headers, HttpStatus.CREATED);

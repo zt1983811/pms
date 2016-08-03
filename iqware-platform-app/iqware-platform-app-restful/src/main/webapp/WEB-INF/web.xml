@@ -14,7 +14,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.iqwareinc.platform.app.restapi.configuration.RootContextConfiguration</param-value>
+		<param-value>com.iqwareinc.platform.app.configuration.RootContextConfiguration</param-value>
 	</context-param>
 
 	<!-- Listeners -->
@@ -32,24 +32,23 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- web application servlet -->
-	<!-- <servlet> -->
-	<!-- <servlet-name>webAppServlet</servlet-name> -->
-	<!-- <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
-	<!-- <init-param> -->
-	<!-- <param-name>contextClass</param-name> -->
-	<!-- <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value> -->
-	<!-- </init-param> -->
-	<!-- <init-param> -->
-	<!-- <param-name>contextConfigLocation</param-name> -->
-	<!-- <param-value>com.iqwareinc.platform.app.restapi.configuration.WebServletContextConfiguration</param-value> -->
-	<!-- </init-param> -->
-	<!-- <load-on-startup>1</load-on-startup> -->
-	<!-- </servlet> -->
-	<!-- <servlet-mapping> -->
-	<!-- <servlet-name>webAppServlet</servlet-name> -->
-	<!-- <url-pattern>/</url-pattern> -->
-	<!-- </servlet-mapping> -->
+	<servlet>
+		<servlet-name>webAppServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextClass</param-name>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>com.iqwareinc.platform.app.configuration.WebServletContextConfiguration</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>webAppServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
 	<!-- web application servlet -->
 	<servlet>
@@ -61,7 +60,7 @@
 		</init-param>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>com.iqwareinc.platform.app.restapi.configuration.RestServletContextConfiguration</param-value>
+			<param-value>com.iqwareinc.platform.app.configuration.RestServletContextConfiguration</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
