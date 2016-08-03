@@ -82,9 +82,7 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
-
-
+		
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>

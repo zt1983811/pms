@@ -5,11 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.iqwareinc.platform.common.annotation.RestEndpoint;
+import com.iqwareinc.platform.common.annotation.WebController;
 import com.iqwareinc.platform.core.model.entity.Property;
 import com.iqwareinc.platform.core.service.PropertyService;
 
-@RestEndpoint
+@WebController
 @RequestMapping(value = "/properties")
 public class PropertyController {
 

@@ -6,9 +6,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -16,12 +14,8 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement
-@ComponentScan(basePackages = { "com.iqwareinc.platform.core.repository", "com.iqwareinc.platform.core.service" })
-@PropertySource({ "classpath:META-INF/persistence.properties" })
 public class PlatformCoreConfigruation {
    public static final String PERSISTENCE_UNIT_NAME = "pms";
 
