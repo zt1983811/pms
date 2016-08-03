@@ -21,8 +21,10 @@ import com.iqwareinc.platform.common.exception.ResourceNotFoundException;
 import com.iqwareinc.platform.core.model.entity.Property;
 import com.iqwareinc.platform.core.service.PropertyService;
 
+import static com.iqwareinc.platform.app.restapi.ResourceConstants.*;
+
 @RestEndpoint
-@RequestMapping(value = "/properties")
+@RequestMapping(value = $PROPERTIES$_PATH)
 public class PropertyRestController {
 
    @Inject
@@ -50,7 +52,7 @@ public class PropertyRestController {
       property.setType(form.getType());
       property = this.propertyService.saveProperty(property);
 
-      String uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path("/properties/{id}").buildAndExpand(property.getId()).toString();
+      String uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path($PROPERTIES$_PATH + "/{id}").buildAndExpand(property.getId()).toString();
       HttpHeaders headers = new HttpHeaders();
       headers.add("Location", uri);
       return new ResponseEntity<>(property, headers, HttpStatus.CREATED);
@@ -71,15 +73,14 @@ public class PropertyRestController {
    @ResponseStatus(HttpStatus.NO_CONTENT)
    public void update(@PathVariable("id") Long id, @RequestBody PropertyForm form) {
       Property property = propertyService.findPropertyById(id);
-      
-      if(property == null) {
+
+      if (property == null) {
          throw new ResourceNotFoundException();
       }
-      
+
       property.setName(form.getName());
       property.setType(form.getType());
-      
+
       propertyService.saveProperty(property);
-      
    }
 }
