@@ -190,6 +190,12 @@
 
 		</dependencies>
 	</dependencyManagement>
+	
+	<modules>
+		<module>../iqware-platform-common</module>
+		<module>../iqware-platform-core</module>
+		<module>../iqware-platform-app</module>
+	</modules>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
