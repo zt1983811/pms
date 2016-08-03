@@ -28,6 +28,14 @@ public class PropertyRestController {
    @Inject
    private PropertyService propertyService;
 
+   @RequestMapping(method = RequestMethod.OPTIONS)
+   public ResponseEntity<Void> discover() {
+      HttpHeaders headers = new HttpHeaders();
+      headers.add("Allow", "GET, POST");
+
+      return new ResponseEntity<Void>(null, headers, HttpStatus.OK);
+   }
+
    @RequestMapping(method = RequestMethod.GET)
    @ResponseBody
    @ResponseStatus(HttpStatus.OK)
@@ -42,7 +50,7 @@ public class PropertyRestController {
       property.setType(form.getType());
       property = this.propertyService.saveProperty(property);
 
-      String uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path("/property/{id}").buildAndExpand(property.getId()).toString();
+      String uri = ServletUriComponentsBuilder.fromCurrentServletMapping().path("/properties/{id}").buildAndExpand(property.getId()).toString();
       HttpHeaders headers = new HttpHeaders();
       headers.add("Location", uri);
       return new ResponseEntity<>(property, headers, HttpStatus.CREATED);
@@ -53,8 +61,25 @@ public class PropertyRestController {
    @ResponseStatus(HttpStatus.OK)
    public Property read(@PathVariable("id") long id) {
       Property property = this.propertyService.findPropertyById(id);
-      if (property == null)
+      if (property == null) {
          throw new ResourceNotFoundException();
+      }
       return property;
+   }
+
+   @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+   @ResponseStatus(HttpStatus.NO_CONTENT)
+   public void update(@PathVariable("id") Long id, @RequestBody PropertyForm form) {
+      Property property = propertyService.findPropertyById(id);
+      
+      if(property == null) {
+         throw new ResourceNotFoundException();
+      }
+      
+      property.setName(form.getName());
+      property.setType(form.getType());
+      
+      propertyService.saveProperty(property);
+      
    }
 }

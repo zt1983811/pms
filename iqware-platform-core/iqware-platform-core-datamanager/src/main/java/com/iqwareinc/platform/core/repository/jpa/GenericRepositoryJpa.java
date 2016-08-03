@@ -11,6 +11,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.apache.commons.lang3.Validate;
+
 import com.iqwareinc.platform.core.model.entity.BaseEntity;
 import com.iqwareinc.platform.core.repository.GenericRepository;
 
@@ -48,9 +50,16 @@ public abstract class GenericRepositoryJpa<ID_T extends Serializable, T extends 
    }
 
    @Override
-   public T persist(T entity) {
-      entityManager.persist(entity);
-      return entity;
+   public T save(T entity) {
+      Validate.notNull(entity);
+
+      if (entity.getId() == null) {
+         entityManager.persist(entity);
+         return entity;
+      }
+      else {
+         return entityManager.merge(entity);
+      }
    }
 
    @Override

@@ -19,7 +19,7 @@ public class PropertyServiceImpl implements PropertyService {
 
    @Override
    public Property saveProperty(Property property) {
-      return propertyRepository.persist(property);
+      return propertyRepository.save(property);
    }
 
    @Override

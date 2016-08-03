@@ -9,7 +9,7 @@ public interface GenericRepository<ID_T extends Serializable, T extends BaseEnti
 
    public T find(ID_T id);
 
-   public T persist(T entity);
+   public T save(T entity);
 
    public List<T> findAll();
 }

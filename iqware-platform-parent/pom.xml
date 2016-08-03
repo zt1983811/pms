@@ -5,6 +5,37 @@
 	<artifactId>iqware-platform-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	
+	<name>IQWare Platform Parent Project</name>
+	
+	<description>
+		This project serves as a central place for defining boilerplate configuration across multiple project, including the dependencies,  plugins,
+		and common features shared by all the projects like Java version and source code encoding character set.
+	</description>
+	
+	<url>https://github.com/ericzhu/pms/tree/master/iqware-platform-parent</url>
+	
+	<licenses>
+		<license>
+			<name>Non open source project</name>
+			<comments>This is a non open source project</comments>
+		</license>
+	</licenses>
+	
+	<organization>
+		<name>IQWare Inc</name>
+		<url>http://iqware.com</url>
+	</organization>
+	
+	<developers>
+		<developer>
+			<name>Tong Zhou</name>
+		</developer>
+		<developer>
+			<name>Eric Zhu</name>
+		</developer>
+	</developers>
+	
 
 	<properties>
 		<commons-collections.version>3.2.2</commons-collections.version>
@@ -162,6 +193,7 @@
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
+		
 		<pluginManagement>
 			<plugins>
 				<plugin>
