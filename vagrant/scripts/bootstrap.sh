@@ -21,7 +21,8 @@ wget http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.4/bin/apache-tomcat-
 mkdir /opt/tomcat
 tar xzvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
 chown -R ubuntu:ubuntu /opt/tomcat
-chmod -R 777 tomcat
+# chmod -R 777 /opt/tomcat
+
 echo '
 [Unit]
 Description=Apache Tomcat Web Application Container
