@@ -53,10 +53,11 @@ WantedBy=multi-user.target
 systemctl daemon-reload
 systemctl start tomcat
 
-
 git clone https://github.com/ericzhu/pms.git
+chown ubuntu:ubuntu
 cd pms
 git checkout -b dev origin/dev
+cd iqware-platform-parent
 mvn clean install -Pparent
 mvn clean install
-cp ~/pms/iqware-platform-app/iqware-platform-app-restful/target/iqware-platform-app-restful.war /opt/tomcat/webapps/iqware-platform-app-restful.war
+cp /home/ubuntu/pms/iqware-platform-app/iqware-platform-app-restful/target/app.war /opt/tomcat/webapps/app.war
