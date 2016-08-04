@@ -6,8 +6,10 @@
 		<artifactId>iqware-platform-app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>iqware-platform-app-restful</artifactId>
+	<artifactId>app</artifactId>
 	<packaging>war</packaging>
+
+	<name>IQWARE Platform Rest API</name>
 
 	<properties>
 		<java.servlet.version>2.5</java.servlet.version>
