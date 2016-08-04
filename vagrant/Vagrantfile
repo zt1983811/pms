@@ -1,17 +1,16 @@
-machine_name = "pma"
+machine_name = "pms"
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/xenial64"
     config.vm.provider "virtualbox" do |v|
+        v.name = "#{machine_name}"
         v.memory = 2048
         v.cpus = 2
-#        v.customize ['modifyvm', :id, '--natnet1', '192.168.222.5/6']
     end
 
     config.vm.define "#{machine_name}" do |machine|
-        config.vm.network "private_network", ip: "192.168.1.1"
-        config.vm.network "public_network", type: "dhcp" 
-#        machine.vm.network "private_network", type: "dhcp"
+        machine.vm.network "private_network", ip: "192.168.1.1"
+        machine.vm.network "public_network", type: "dhcp" 
         machine.vm.provision "host_shell" do |host_shell|
             host_shell.inline = "scripts/host.sh"
         end
