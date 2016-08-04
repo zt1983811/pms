@@ -5,10 +5,10 @@ import java.util.Properties;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,6 +17,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 public class PlatformCoreConfigruation {
+
    public static final String PERSISTENCE_UNIT_NAME = "pms";
 
    @Inject
@@ -24,11 +25,15 @@ public class PlatformCoreConfigruation {
 
    @Bean
    public DataSource dataSource() {
-      DriverManagerDataSource dataSource = new DriverManagerDataSource();
-      dataSource.setUsername(environment.getProperty("db.username"));
-      dataSource.setPassword(environment.getProperty("db.password"));
-      dataSource.setUrl(environment.getProperty("db.url"));
-      return dataSource;
+
+      BasicDataSource basicDataSource = new BasicDataSource();
+      basicDataSource.setDriverClassName(environment.getProperty("db.driver"));
+      basicDataSource.setUrl(environment.getProperty("db.url"));
+      basicDataSource.setUsername(environment.getProperty("db.username"));
+      basicDataSource.setPassword(environment.getProperty("db.password"));
+      basicDataSource.setInitialSize(Integer.valueOf(environment.getProperty("db.conn.size")));
+      return basicDataSource;
+
    }
 
    @Bean
