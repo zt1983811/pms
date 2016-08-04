@@ -15,6 +15,7 @@ import org.apache.commons.lang3.Validate;
 
 import com.iqwareinc.platform.core.model.entity.BaseEntity;
 import com.iqwareinc.platform.core.repository.GenericRepository;
+import com.iqwareinc.platform.common.exception.ResourceNotFoundException;
 
 public abstract class GenericRepositoryJpa<ID_T extends Serializable, T extends BaseEntity<ID_T>> implements GenericRepository<ID_T, T> {
 
@@ -41,33 +42,43 @@ public abstract class GenericRepositoryJpa<ID_T extends Serializable, T extends 
       this.entityClass = (Class<T>)arguments[1];
    }
 
-   @Override
-   public T find(ID_T id) {
-      if (id == null) {
-         return null;
-      }
-      return entityManager.find(entityClass, id);
-   }
+    @Override
+    public T find(ID_T id) {
+        if (id == null) {
+            return null;
+        }
+        return entityManager.find(entityClass, id);
+    }
 
-   @Override
-   public T save(T entity) {
-      Validate.notNull(entity);
+    @Override
+    public T save(T entity) {
+        Validate.notNull(entity);
 
-      if (entity.getId() == null) {
-         entityManager.persist(entity);
-         return entity;
-      }
-      else {
-         return entityManager.merge(entity);
-      }
-   }
+        if (entity.getId() == null) {
+             entityManager.persist(entity);
+             return entity;
+        }
+        else {
+            return entityManager.merge(entity);
+        }
+    }
 
-   @Override
-   public List<T> findAll() {
-      CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-      CriteriaQuery<T> criteria = cb.createQuery(entityClass);
-      Root<T> root = criteria.from(entityClass);
-      criteria.select(root);
-      return entityManager.createQuery(criteria).getResultList();
-   }
+    @Override
+    public List<T> findAll() {
+        CriteriaBuilder cb        = entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> criteria = cb.createQuery(entityClass);
+        Root<T> root              = criteria.from(entityClass);
+        criteria.select(root);
+        return entityManager.createQuery(criteria).getResultList();
+    }
+
+
+    @Override
+    public void delete(ID_T id) {
+        T entity = find(id);
+        if (entity == null) {
+            throw new ResourceNotFoundException();
+        }
+        entityManager.remove(entity);
+    }
 }

@@ -9,6 +9,7 @@
 	<artifactId>iqware-platform-core-datamanager</artifactId>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>com.iqwareinc.platform.core</groupId>
 			<artifactId>iqware-platform-core-model</artifactId>

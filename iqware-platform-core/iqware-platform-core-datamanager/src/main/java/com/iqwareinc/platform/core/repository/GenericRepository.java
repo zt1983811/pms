@@ -7,9 +7,11 @@ import com.iqwareinc.platform.core.model.entity.BaseEntity;
 
 public interface GenericRepository<ID_T extends Serializable, T extends BaseEntity<ID_T>> {
 
-   public T find(ID_T id);
+    public T find(ID_T id);
 
-   public T save(T entity);
+    public T save(T entity);
 
-   public List<T> findAll();
+    public List<T> findAll();
+
+    public void delete(ID_T id);
 }
